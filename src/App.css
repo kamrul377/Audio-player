@@ -10,3 +10,10 @@ body{
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
+audio::-webkit-media-controls-play-button{ 
+    display: none;
+}
+audio::-moz-controls-play-button{ 
+    display: none;
+}

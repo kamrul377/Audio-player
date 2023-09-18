@@ -3,10 +3,10 @@ import React from 'react'
 
 import { BsFillPlayFill, BsArrowRightCircleFill } from 'react-icons/bs'
 import { HiMiniPause } from 'react-icons/hi2'
-import { FaCircleChevronLeft } from 'react-icons/fa6'
+import { FaCircleChevronLeft, FaCircleChevronRight } from 'react-icons/fa6'
 
 
-const Controls = ({ currentSong, setCurrentSong, song }) => {
+const Controls = ({ currentSong, setCurrentSong, song, isPlaying, setIsPlaying }) => {
 
 
 
@@ -34,13 +34,18 @@ const Controls = ({ currentSong, setCurrentSong, song }) => {
 
 
     return (
-        <div className='flex bg-blue-200 w-full justify-between px-10 py-4'>
+        <div className='flex border w-full justify-between px-10 py-4 rounded  '>
 
-            <FaCircleChevronLeft className='hover:cursor-pointer' size={30} onClick={handleDecrement} />
+            <FaCircleChevronLeft color='cyan' className='hover:cursor-pointer' size={30} onClick={handleDecrement} />
 
-            <BsFillPlayFill size={30} className='hover:cursor-pointer' />
 
-            <BsArrowRightCircleFill className='hover:cursor-pointer' size={30} onClick={handleIncrement} />
+            {
+                isPlaying ? <HiMiniPause size={30} onClick={() => setIsPlaying(!isPlaying)} className='hover:cursor-pointer rounded-full text-[#eef1f5]' /> : <BsFillPlayFill onClick={() => setIsPlaying(!isPlaying)} size={30} className='hover:cursor-pointer text-[#eef1f5]' />
+            }
+
+
+
+            <FaCircleChevronRight className='hover:cursor-pointer' color='cyan' size={30} onClick={handleIncrement} />
         </div>
     )
 }
